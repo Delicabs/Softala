@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-//testi testi testi tämä on testi terveisin kasper
+//testi testi testi tämä on testi terveisin Erkki
+//Testi Jontte 1 2 3
 
 @SpringBootApplication
 public class SoftaalaApplication {
