@@ -2,8 +2,9 @@ package com.example.softaala;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//WALLAH VELJET
 
+//testi_homma2
+//testi_homma
 // Testi Niilolle --
 //testi niilo
 //testi testi testi tämä on testi terveisin Erkki
