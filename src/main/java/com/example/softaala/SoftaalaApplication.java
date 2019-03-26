@@ -3,7 +3,7 @@ package com.example.softaala;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//asdasd
+
 
 // Testi Niilolle --
 //testi niilo
