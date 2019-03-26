@@ -11,6 +11,12 @@
 
 <p th:text="'hello '+ ${hello}"></p>
 
+<tr th:each="form : ${forms}">
+<td th:text="${form.Question}"></td>
+
+
+</tr>
+
 
 
 </body>
