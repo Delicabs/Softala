@@ -17,8 +17,8 @@ public class SoftaController {
     @Autowired
     FormRepository formRepository;
 
-
-    @RequestMapping(value = "/books")
+    // RESTful all questions
+    @RequestMapping(value = "/questions")
     public @ResponseBody
     List<Form> formListRest() {
         return (List<Form>) formRepository.findAll();
