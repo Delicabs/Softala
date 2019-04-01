@@ -1,1 +1,0 @@
-web: java -jar target/softaala-1.0.0.jar
