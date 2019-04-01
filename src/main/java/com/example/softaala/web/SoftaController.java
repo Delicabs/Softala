@@ -5,13 +5,11 @@ import com.example.softaala.domain.FormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class SoftaController {
@@ -29,9 +27,10 @@ public class SoftaController {
 
     @RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
     public @ResponseBody
-    Optional<Form> findQuestionRest(@PathVariable("id") Long formId) {
-        return formRepository.findById(formId);
+    Optional<Form> formListRest() {
+        return (List<Form>) formRepository.findById(formId);
     }
+
 
 
 
