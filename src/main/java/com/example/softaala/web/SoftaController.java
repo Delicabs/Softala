@@ -38,7 +38,7 @@ public class SoftaController {
     @RequestMapping("/index")
     public String index(Model model) {
 
-        String hello = "Hello World controller";
+        String hello = "Hello World fucking rad controller";
         model.addAttribute("forms", formRepository.findAll());
         model.addAttribute("hello", hello);
         return "index";
