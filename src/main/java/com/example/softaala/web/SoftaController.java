@@ -21,7 +21,7 @@ public class SoftaController {
     FormRepository formRepository;
 
     // RESTful all questions
-    @RequestMapping(value = "/formsall")
+    @RequestMapping(value = "/forms")
     public @ResponseBody
     List<Form> formListRest() {
         return (List<Form>) formRepository.findAll();
