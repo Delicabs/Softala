@@ -5,40 +5,43 @@ import com.example.softaala.domain.FormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class SoftaController {
 
-    private EntityManager manager;
 
     @Autowired
     FormRepository formRepository;
 
     // RESTful all questions
-    @RequestMapping(value = "/questions", method = RequestMethod.GET)
+    @RequestMapping(value = "/fomrs")
     public @ResponseBody
     List<Form> formListRest() {
         return (List<Form>) formRepository.findAll();
     }
 
-    //RESTfull service to get form id
-    @RequestMapping(value="/form/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
     public @ResponseBody
-    Optional<Form> findFormRest(@PathVariable("id") long formId) {
+    Optional<Form> findQuestionRest(@PathVariable("id") Long formId) {
         return formRepository.findById(formId);
     }
+
+
 
     @RequestMapping("/index")
     public String index(Model model) {
 
-        String hello = "Hello World controller";
+        String hello = "Hello World fucking rad controller";
         model.addAttribute("forms", formRepository.findAll());
         model.addAttribute("hello", hello);
         return "index";
     }
+
 }
