@@ -55,7 +55,7 @@ public class SoftaController {
 
     @RequestMapping("/testi")
     public String testi(Model model) {
-        Questions question = new Questions("JAva paska","");
+        Questions question = new Questions("JAva paska","","");
       Form form = new Form("Paska perse");
       formRepository.save(form);
       questionsRepository.save(question);

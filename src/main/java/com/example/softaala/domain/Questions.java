@@ -13,7 +13,15 @@ public class Questions {
     private long id;
     private String Question;
     private String vaihtoehto1;
+    private String vaihtoehto2;
 
+    public String getVaihtoehto2() {
+        return vaihtoehto2;
+    }
+
+    public void setVaihtoehto2(String vaihtoehto2) {
+        this.vaihtoehto2 = vaihtoehto2;
+    }
 
     public Questions(){
 
@@ -21,9 +29,10 @@ public class Questions {
 
 
 
-    public Questions(String question, String vaihtoehto1) {
+    public Questions(String question, String vaihtoehto1, String vaihtoehto2) {
         Question = question;
         this.vaihtoehto1 = vaihtoehto1;
+        this.vaihtoehto2 = vaihtoehto2;
     }
 
     public long getId() {
@@ -52,6 +61,7 @@ public class Questions {
 
     @Override
     public String toString() {
-        return "Questions{" + "id=" + id + ", Question='" + Question + '\'' + ", vaihtoehto1='" + vaihtoehto1 + '\'' + '}';
+        return "Questions{" + "id=" + id + ", Question='" + Question + '\'' + ", vaihtoehto1='" + vaihtoehto1 + '\'' + ", vaihtoehto2='" + vaihtoehto2 + '\'' + '}';
     }
+
 }
