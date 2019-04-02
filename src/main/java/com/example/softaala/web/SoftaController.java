@@ -37,8 +37,8 @@ public class SoftaController {
 
     @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
     public @ResponseBody
-    Optional<Form> findQuestionRest(@PathVariable("id") Long formId) {
-        return formRepository.findById(formId);
+    Optional<Questions> findQuestinByID(@PathVariable("id") Long questionId) {
+        return questionsRepository.findById(questionId);
     }
 
 
