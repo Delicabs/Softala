@@ -1,6 +1,5 @@
 package com.example.softaala;
 
-import com.example.softaala.domain.Form;
 import com.example.softaala.domain.FormRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,8 +26,8 @@ public class SoftaalaApplication {
     public CommandLineRunner books(FormRepository formRepository) {
         return (args) -> {
 
-            Form form1 = new Form("Testi kyssäri, oletko supersankari?");
-            formRepository.save(form1);
+           // Form form1 = new Form("Testi kyssäri, oletko supersankari?");
+           // formRepository.save(form1);
         };
 
     }

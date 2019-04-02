@@ -21,7 +21,7 @@ public class SoftaController {
     FormRepository formRepository;
 
     // RESTful all questions
-    @RequestMapping(value = "/questions")
+    @RequestMapping(value = "/forms")
     public @ResponseBody
     List<Form> formListRest() {
         return (List<Form>) formRepository.findAll();
@@ -38,10 +38,21 @@ public class SoftaController {
     @RequestMapping("/index")
     public String index(Model model) {
 
-        String hello = "Hello World controller";
+        String hello = "Hello World fucking rad controller";
         model.addAttribute("forms", formRepository.findAll());
         model.addAttribute("hello", hello);
         return "index";
     }
+
+
+    @RequestMapping("/testi")
+    public String testi(Model model) {
+      Form form = new Form("Paska perse");
+      formRepository.save(form);
+
+
+        return "index";
+    }
+
 
 }
