@@ -44,4 +44,15 @@ public class SoftaController {
         return "index";
     }
 
+
+    @RequestMapping("/testi")
+    public String testi(Model model) {
+      Form form = new Form();
+      formRepository.save(form);
+
+
+        return "index";
+    }
+
+
 }
