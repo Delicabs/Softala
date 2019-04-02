@@ -12,36 +12,41 @@ public class Questions {
 
     private long id;
     private String Question;
+    private String vaihtoehto1;
 
 
     public Questions(){
 
     }
-    public Questions(String question){
+
+
+
+    public Questions(String question, String vaihtoehto1) {
         Question = question;
+        this.vaihtoehto1 = vaihtoehto1;
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getQuestion() {
         return Question;
+    }
+
+    public String getVaihtoehto1() {
+        return vaihtoehto1;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setQuestion(String question) {
         Question = question;
     }
 
-    @Override
-    public String toString() {
-        return "Questions{" +
-                "id=" + id +
-                ", Question='" + Question + '\'' +
-                '}';
+    public void setVaihtoehto1(String vaihtoehto1) {
+        this.vaihtoehto1 = vaihtoehto1;
     }
 }
