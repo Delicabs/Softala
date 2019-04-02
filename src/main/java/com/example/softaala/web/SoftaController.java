@@ -2,6 +2,8 @@ package com.example.softaala.web;
 
 import com.example.softaala.domain.Form;
 import com.example.softaala.domain.FormRepository;
+import com.example.softaala.domain.Questions;
+import com.example.softaala.domain.QuestionsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,19 +17,25 @@ import java.util.Optional;
 
 @Controller
 public class SoftaController {
-
+    @Autowired
+    QuestionsRepository questionsRepository;
 
     @Autowired
     FormRepository formRepository;
 
     // RESTful all questions
-    @RequestMapping(value = "/forms")
+    // @RequestMapping(value = "/questions")
+   // public @ResponseBody
+  //  List<Form> formListRest() {
+      //  return (List<Form>) formRepository.findAll();
+  //  }
+
+    @RequestMapping(value = "/questions")
     public @ResponseBody
-    List<Form> formListRest() {
-        return (List<Form>) formRepository.findAll();
+    List<Questions> questionRest() { return (List<Questions>) questionsRepository.findAll();
     }
 
-    @RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
     public @ResponseBody
     Optional<Form> findQuestionRest(@PathVariable("id") Long formId) {
         return formRepository.findById(formId);
@@ -47,8 +55,10 @@ public class SoftaController {
 
     @RequestMapping("/testi")
     public String testi(Model model) {
+        Questions question = new Questions("JAva paska");
       Form form = new Form("Paska perse");
       formRepository.save(form);
+      questionsRepository.save(question);
 
 
         return "index";
