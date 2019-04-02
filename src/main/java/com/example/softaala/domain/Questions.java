@@ -49,4 +49,9 @@ public class Questions {
     public void setVaihtoehto1(String vaihtoehto1) {
         this.vaihtoehto1 = vaihtoehto1;
     }
+
+    @Override
+    public String toString() {
+        return "Questions{" + "id=" + id + ", Question='" + Question + '\'' + ", vaihtoehto1='" + vaihtoehto1 + '\'' + '}';
+    }
 }
