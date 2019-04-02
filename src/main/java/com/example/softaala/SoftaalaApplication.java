@@ -31,7 +31,7 @@ public class SoftaalaApplication {
           // Form form1 = new Form("Testi kyssäri, oletko supersankari?");
            //formRepository.save(form1);
 
-            Questions question1 = new Questions("Tämä on kysymys 1","Oletko koskaan juonut kaljaa?", "");
+            Questions question1 = new Questions("Tämä on kysymys 1",null, null);
             Questions question2 = new Questions("tämä on kysymys 2", "Hei oletko sinä syönyt pizzaa?","Oletko vegaani");
             questionsRepository.save(question1);
             questionsRepository.save(question2);
