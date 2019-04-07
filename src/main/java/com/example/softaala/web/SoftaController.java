@@ -78,7 +78,7 @@ public class SoftaController {
         model.addAttribute("hello", hello);
         return "index";
     }
-
+    @CrossOrigin(origins = "https://softarest.herokuapp.com/savejson")
     @RequestMapping(value="/savejson",method=RequestMethod.POST)
 
     public  @ResponseBody void getAsnwers(@RequestBody Answers answer, HttpServletRequest request) {
