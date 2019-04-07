@@ -84,7 +84,9 @@ public class SoftaController {
     public  @ResponseBody void getAsnwers(@RequestBody Answers answer, HttpServletRequest request) {
 
          String answer1 = answer.getAnswers();
-         answersRepository.save(answer);
+         Answers ans1 = new Answers();
+         ans1.setAnswers(answer1);
+         answersRepository.save(ans1);
 
         // your logic next
 
