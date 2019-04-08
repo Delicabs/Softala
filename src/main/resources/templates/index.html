@@ -1,10 +1,10 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-                         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-             <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
 <p>Hello world my lonely men from mars templatesta</p>
@@ -12,15 +12,15 @@
 <p th:text="'hello '+ ${hello}"></p>
 
 <tr th:each="form : ${forms}">
-<td th:text="${form.question}"></td>
+    <td th:text="${form.question}"></td>
 
 
-<!-- spring.datasource.url=${JDBC_DATABASE_URL}
-     spring.datasource.username=${JDBC_DATABASE_USERNAME}
-     spring.datasource.password=${JDBC_DATABASE_PASSWORD}
-     spring.jpa.show-sql=false
-     spring.jpa.generate-ddl=true
-     spring.jpa.hibernate.ddl-auto=update -->
+    <!-- spring.datasource.url=${JDBC_DATABASE_URL}
+         spring.datasource.username=${JDBC_DATABASE_USERNAME}
+         spring.datasource.password=${JDBC_DATABASE_PASSWORD}
+         spring.jpa.show-sql=false
+         spring.jpa.generate-ddl=true
+         spring.jpa.hibernate.ddl-auto=update -->
 
 
 </tr>

@@ -1,39 +1,66 @@
 package com.example.softaala.web;
 
-import com.example.softaala.domain.Form;
-import com.example.softaala.domain.FormRepository;
-import com.example.softaala.domain.Questions;
-import com.example.softaala.domain.QuestionsRepository;
+import com.example.softaala.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class SoftaController {
+
+
     @Autowired
     QuestionsRepository questionsRepository;
 
     @Autowired
     FormRepository formRepository;
+    @Autowired
+    AnswersRepository answersRepository;
+
+
+
 
     // RESTful all questions
     // @RequestMapping(value = "/questions")
-   // public @ResponseBody
-  //  List<Form> formListRest() {
-      //  return (List<Form>) formRepository.findAll();
-  //  }
+    // public @ResponseBody
+    //  List<Form> formListRest() {
+    //  return (List<Form>) formRepository.findAll();
+    //  }
+
+    @RequestMapping(value = "/savejson")
+    public String addJson(Model model){
+    model.addAttribute("Answer", new Answers());
+
+
+
+    return "savejson";
+    }
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(Answers answers){
+
+      answersRepository.save(answers);
+
+
+
+        return "redirect:index";
+    }
+
 
     @RequestMapping(value = "/questions")
     public @ResponseBody
     List<Questions> questionRest() { return (List<Questions>) questionsRepository.findAll();
     }
+
+    @RequestMapping(value = "/answers")
+    public @ResponseBody
+    List<Answers> answersRest() { return (List<Answers>) answersRepository.findAll();
+    }
+
 
     @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
     public @ResponseBody
@@ -51,18 +78,20 @@ public class SoftaController {
         model.addAttribute("hello", hello);
         return "index";
     }
+    @CrossOrigin
+    @RequestMapping(value="/savejson",method=RequestMethod.POST)
 
+    public  @ResponseBody void getAsnwers(@RequestBody Answers answer, HttpServletRequest request) {
 
-    @RequestMapping("/testi")
-    public String testi(Model model) {
-        Questions question = new Questions("JAva paska","","");
-      Form form = new Form("Paska perse");
-      formRepository.save(form);
-      questionsRepository.save(question);
+         String answer1 = answer.getAnswers();
+         Answers ans1 = new Answers();
+         ans1.setAnswers(answer1);
+         answersRepository.save(ans1);
 
+        // your logic next
 
-        return "index";
     }
+
 
 
 }
