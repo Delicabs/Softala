@@ -94,7 +94,7 @@ public class SoftaController {
     @CrossOrigin
     @RequestMapping(value = "/savejson", method = RequestMethod.POST)
     public @ResponseBody
-    String saveJson(@RequestParam Answers  answers) throws ParseException, IOException {
+    String saveJson(@RequestBody Answers  answers) throws ParseException, IOException {
 
 
        answersRepository.save(answers);
