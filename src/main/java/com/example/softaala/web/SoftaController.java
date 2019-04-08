@@ -2,6 +2,7 @@ package com.example.softaala.web;
 
 import com.example.softaala.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,16 +34,16 @@ public class SoftaController {
 
     @RequestMapping(value = "/savejson")
     public String addJson(Model model) {
-        model.addAttribute("Answer", new Answers());
+        model.addAttribute("Answer", new Answer());
 
 
         return "savejson";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Answers answers) {
+    public String save(Answer answer) {
 
-        answersRepository.save(answers);
+        answersRepository.save(answer);
 
 
         return "redirect:index";
@@ -57,8 +58,8 @@ public class SoftaController {
 
     @RequestMapping(value = "/answers")
     public @ResponseBody
-    List<Answers> answersRest() {
-        return (List<Answers>) answersRepository.findAll();
+    List<Answer> answersRest() {
+        return (List<Answer>) answersRepository.findAll();
     }
 
 
@@ -77,14 +78,20 @@ public class SoftaController {
         model.addAttribute("hello", hello);
         return "index";
     }
+    @RequestMapping("/testi")
+    public String testi(Model model) {
+
+
+        return "testitesti";
+    }
 
     /* @CrossOrigin
      @RequestMapping(value="/savejson",method=RequestMethod.POST)
 
-     public  @ResponseBody void getAnswers(@RequestBody Answers answer, HttpServletRequest request) {
+     public  @ResponseBody void getAnswers(@RequestBody Answer answer, HttpServletRequest request) {
 
           String answer1 = answer.getAnswers();
-          Answers ans1 = new Answers();
+          Answer ans1 = new Answer();
           ans1.setAnswers(answer1);
           answersRepository.save(ans1);
 
@@ -92,12 +99,14 @@ public class SoftaController {
 
      } */
     @CrossOrigin
-    @RequestMapping(value = "/savejson", method = RequestMethod.POST)
+    @RequestMapping(value = "/savejson", method = RequestMethod.POST,  consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    String saveJson(@RequestBody Answers  answers) throws ParseException, IOException {
+    String saveJson(@RequestBody Answer answer) throws ParseException, IOException {
 
-        System.out.print(answers);
-       answersRepository.save(answers);
+
+                System.out.print(answer);
+       answersRepository.save(answer);
 
 
        return "savejson";
