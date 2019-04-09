@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 //Testees
 //asdkhaghdfjasdhngfkö
 // Testi et Daniel näkee
-
+//asdasd
 
 @SpringBootApplication
 public class SoftaalaApplication {
