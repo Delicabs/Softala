@@ -1,13 +1,24 @@
 package com.example.softaala.domain;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
 public class MultipleChoice {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long choiceid;
     private String optiona;
     private String optionb;
     private String optionc;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "multiplechoice")
+    private List<Questions> questions;
+
     public MultipleChoice(){}
 
     public MultipleChoice(String optiona, String optionb, String optionc)   {
+        super();
         this.optiona = optiona;
         this.optionb = optionb;
         this.optionc = optionc;

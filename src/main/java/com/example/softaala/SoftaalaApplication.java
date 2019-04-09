@@ -24,20 +24,21 @@ public class SoftaalaApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SoftaalaApplication.class, args);
+
     }
 
     @Bean
-    public CommandLineRunner books(FormRepository formRepository, QuestionsRepository questionsRepository) {
+    public CommandLineRunner questions(QuestionsRepository questionsRepository) {
         return (args) -> {
 
           // Form form1 = new Form("Testi kyssäri, oletko supersankari?");
            //formRepository.save(form1);
 
-            Questions question1 = new Questions("Missä koulutusohjelmassa opiskelet?",null, null);
-            Questions question2 = new Questions("Missä profiilissa opiskelet / aiot opiskella?", null,null);
-            Questions question3 = new Questions("Oletko onnistunut verkostoitumaan koulussa? Esimerkiksi onko sinulla kaveriporukka, jonka kanssa ratkotte opiskeluun liittyviä pulmia?",null, null);
-            Questions question4 = new Questions("Oletko verkostoitunut koulun ulkopuolella IT-alan ihmisten kanssa?", null,null);
-            Questions question5 = new Questions("Työskenteletkö jo IT-alalla?", null,null);
+            Questions question1 = new Questions("Missä koulutusohjelmassa opiskelet?",null);
+            Questions question2 = new Questions("Missä profiilissa opiskelet / aiot opiskella?", null);
+            Questions question3 = new Questions("Oletko onnistunut verkostoitumaan koulussa? Esimerkiksi onko sinulla kaveriporukka, jonka kanssa ratkotte opiskeluun liittyviä pulmia?",null);
+            Questions question4 = new Questions("Oletko verkostoitunut koulun ulkopuolella IT-alan ihmisten kanssa?", null);
+            Questions question5 = new Questions("Työskenteletkö jo IT-alalla?", null);
             questionsRepository.save(question1);
             questionsRepository.save(question2);
             questionsRepository.save(question3);
