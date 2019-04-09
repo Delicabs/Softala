@@ -2,11 +2,13 @@ package com.example.softaala.web;
 
 import com.example.softaala.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,8 +25,6 @@ public class SoftaController {
     AnswersRepository answersRepository;
 
 
-
-
     // RESTful all questions
     // @RequestMapping(value = "/questions")
     // public @ResponseBody
@@ -33,18 +33,17 @@ public class SoftaController {
     //  }
 
     @RequestMapping(value = "/savejson")
-    public String addJson(Model model){
-    model.addAttribute("Answer", new Answers());
+    public String addJson(Model model) {
+        model.addAttribute("Answer", new Answer());
 
 
-
-    return "savejson";
+        return "savejson";
     }
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Answers answers){
+    public String save(Answer answer) {
 
-      answersRepository.save(answers);
-
+        answersRepository.save(answer);
 
 
         return "redirect:index";
@@ -53,21 +52,22 @@ public class SoftaController {
 
     @RequestMapping(value = "/questions")
     public @ResponseBody
-    List<Questions> questionRest() { return (List<Questions>) questionsRepository.findAll();
+    List<Questions> questionRest() {
+        return (List<Questions>) questionsRepository.findAll();
     }
 
     @RequestMapping(value = "/answers")
     public @ResponseBody
-    List<Answers> answersRest() { return (List<Answers>) answersRepository.findAll();
+    List<Answer> answersRest() {
+        return (List<Answer>) answersRepository.findAll();
     }
 
 
     @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
     public @ResponseBody
-    Optional<Questions> findQuestinByID(@PathVariable("id") Long questionId) {
+    Optional<Questions> findQuestionById(@PathVariable("id") Long questionId) {
         return questionsRepository.findById(questionId);
     }
-
 
 
     @RequestMapping("/index")
@@ -78,20 +78,38 @@ public class SoftaController {
         model.addAttribute("hello", hello);
         return "index";
     }
-    @CrossOrigin
-    @RequestMapping(value="/savejson",method=RequestMethod.POST)
+    @RequestMapping("/testi")
+    public String testi(Model model) {
 
-    public  @ResponseBody void getAsnwers(@RequestBody Answers answer, HttpServletRequest request) {
 
-         String answer1 = answer.getAnswers();
-         Answers ans1 = new Answers();
-         ans1.setAnswers(answer1);
-         answersRepository.save(ans1);
-
-        // your logic next
-
+        return "testitesti";
     }
 
+    /* @CrossOrigin
+     @RequestMapping(value="/savejson",method=RequestMethod.POST)
 
+     public  @ResponseBody void getAnswers(@RequestBody Answer answer, HttpServletRequest request) {
+
+          String answer1 = answer.getAnswers();
+          Answer ans1 = new Answer();
+          ans1.setAnswers(answer1);
+          answersRepository.save(ans1);
+
+         // your logic next
+
+     } */
+    @CrossOrigin
+    @RequestMapping(value = "/savejson", method = RequestMethod.POST,  consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    String saveJson(@RequestBody Answer answer) throws ParseException, IOException {
+
+
+                System.out.print(answer);
+       answersRepository.save(answer);
+
+
+       return "savejson";
+    }
 
 }

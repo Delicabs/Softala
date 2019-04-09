@@ -1,24 +1,27 @@
 package com.example.softaala.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-public class Answers {
+public class Answer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     private long id;
-    private String Answers;
+    private String answer;
 
-    public Answers() {
+    public Answer() {
     }
 
-    public Answers(String answers) {
-        Answers = answers;
+    public Answer(String answer) {
+        this.answer = answer;
 
     }
 
@@ -30,16 +33,16 @@ public class Answers {
         this.id = id;
     }
 
-    public String getAnswers() {
-        return Answers;
+    public String getAnswer() {
+        return answer;
     }
 
-    public void setAnswers(String answers) {
-        Answers = answers;
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 
     @Override
     public String toString() {
-        return "Answers{" + "id=" + id + ", Answers='" + Answers + '\'' + '}';
+        return "Answer{" + "id=" + id + ", Answer='" + answer + '\'' + '}';
     }
 }
