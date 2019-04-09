@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 public class MultipleChoice {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long choiceid;
     private String optiona;
     private String optionb;
