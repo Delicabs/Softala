@@ -3,12 +3,14 @@ package com.example.softaala.domain;
 import javax.persistence.*;
 import java.util.List;
 
+
+//Monivalinnan atribuutit, setterit & getterit
 @Entity
 public class MultipleChoice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long choiceid;
-    private String optiona;
+    private String optiona; //Vaihtoehdot A, B, C
     private String optionb;
     private String optionc;
 

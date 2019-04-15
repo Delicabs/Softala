@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+
+//hieman kommentointia -nile
 //testi_homma2
 //testi_homma
 // Testi Niilolle --
@@ -34,12 +36,14 @@ public class SoftaalaApplication {
 
           // Form form1 = new Form("Testi kyssäri, oletko supersankari?");
            //formRepository.save(form1);
+
+            //Monivalintakyssärit
             MultipleChoice mchoice1 = new MultipleChoice("asd","asdd","asdd");
             MultipleChoice mchoice2 = new MultipleChoice("a","aasdfdf","dsads");
             mrepo.save(mchoice1);
             mrepo.save(mchoice2);
 
-
+            //Kysymysvaihtoehdot id:n mukaisesti
             Questions question1 = new Questions("Missä koulutusohjelmassa opiskelet?",mchoice1);
             Questions question2 = new Questions("Missä profiilissa opiskelet / aiot opiskella?", mchoice2);
             Questions question3 = new Questions("Oletko onnistunut verkostoitumaan koulussa? Esimerkiksi onko sinulla kaveriporukka, jonka kanssa ratkotte opiskeluun liittyviä pulmia?",null);

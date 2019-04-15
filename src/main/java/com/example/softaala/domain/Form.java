@@ -11,6 +11,9 @@ public class Form {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
+    //Formin atribuutit, setterit & getterit
+
+
     private long id;
     private String Question;
 

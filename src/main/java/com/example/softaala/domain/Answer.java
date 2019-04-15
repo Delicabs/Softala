@@ -14,6 +14,8 @@ public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
+    //Vastauksen atribuutit, getterit & setterit
+
     private long id = 0;
     private String answer;
 
@@ -24,6 +26,7 @@ public class Answer {
         this.answer = answer;
 
     }
+
 
     public long getId() {
         return id;

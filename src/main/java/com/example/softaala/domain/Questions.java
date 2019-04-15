@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 @Entity
 public class Questions {
+    //Kysymysten atribuutit, setterit & getterit
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
