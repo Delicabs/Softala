@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+// Thus far this class is pretty munch unused but will be kept for future references
 @Entity
 public class Form {
     @Id

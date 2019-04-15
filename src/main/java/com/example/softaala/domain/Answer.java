@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+// This class contains all the multiple choice
+// answers assigned to the questions class
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 public class Answer {

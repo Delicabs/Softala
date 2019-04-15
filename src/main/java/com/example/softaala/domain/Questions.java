@@ -2,6 +2,9 @@ package com.example.softaala.domain;
 
 import javax.persistence.*;
 
+
+// This class contains all the questions and
+// answers multiple choice answers assigned to the answer class
 @Entity
 public class Questions {
     //Kysymysten atribuutit, setterit & getterit

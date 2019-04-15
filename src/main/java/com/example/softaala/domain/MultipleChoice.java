@@ -4,13 +4,14 @@ import javax.persistence.*;
 import java.util.List;
 
 
-//Monivalinnan atribuutit, setterit & getterit
+// This class returns multiple choice answers
+// to the questions and assigns answers to rightful questions
 @Entity
 public class MultipleChoice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long choiceid;
-    private String optiona; //Vaihtoehdot A, B, C
+    private String optiona;
     private String optionb;
     private String optionc;
 
