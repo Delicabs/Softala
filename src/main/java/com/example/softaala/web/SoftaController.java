@@ -31,7 +31,7 @@ public class SoftaController {
     //  List<Form> formListRest() {
     //  return (List<Form>) formRepository.findAll();
     //  }
-
+    @CrossOrigin
     @RequestMapping(value = "/savejson")
     public String addJson(Model model) {
         model.addAttribute("Answer", new Answer());
@@ -49,20 +49,20 @@ public class SoftaController {
         return "redirect:index";
     }
 
-
+    @CrossOrigin
     @RequestMapping(value = "/questions")
     public @ResponseBody
     List<Questions> questionRest() {
         return (List<Questions>) questionsRepository.findAll();
     }
-
+    @CrossOrigin
     @RequestMapping(value = "/answers")
     public @ResponseBody
     List<Answer> answersRest() {
         return (List<Answer>) answersRepository.findAll();
     }
 
-
+    @CrossOrigin
     @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
     public @ResponseBody
     Optional<Questions> findQuestionById(@PathVariable("id") Long questionId) {
