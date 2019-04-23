@@ -18,8 +18,8 @@ public class Question {
     private List<Value> values;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "answer")
-    private List<Answer> answers;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "question")
+    private Answer answer;
     public Question(){
 
     }
