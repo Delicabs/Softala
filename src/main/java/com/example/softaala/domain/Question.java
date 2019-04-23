@@ -8,7 +8,6 @@ import java.util.List;
 // answers multiple choice answers assigned to the answer class
 @Entity
 public class Question {
-    //Kysymysten atribuutit, setterit & getterit
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +17,7 @@ public class Question {
     private List<Value> values;
 
 
+    //Jontteee
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "question")
     private Answer answer;
     public Question(){
