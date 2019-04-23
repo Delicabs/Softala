@@ -55,6 +55,7 @@ public class SoftaController {
     List<Questions> questionRest() {
         return (List<Questions>) questionsRepository.findAll();
     }
+
     @CrossOrigin
     @RequestMapping(value = "/answers")
     public @ResponseBody
@@ -78,12 +79,40 @@ public class SoftaController {
         model.addAttribute("hello", hello);
         return "index";
     }
+
     @RequestMapping("/testi")
     public String testi(Model model) {
 
 
         return "testitesti";
     }
+
+    // delete question
+
+    // @Preauthorize("hasAuthority('ADMIN)")
+    @RequestMapping(value = "/delete{id}", method = RequestMethod.GET)
+    public String deleteQuestions(@PathVariable("id") Long questionId, Model model) {
+        questionsRepository.deleteById(questionId);
+                return "redirect:../addquestion";
+    }
+
+    // Add new question
+    @RequestMapping(value = "/addquestion")
+    public String addQuestions(Model model) {
+        model.addAttribute("questions", new Questions());
+        model.addAttribute("questions", questionsRepository.findAll());
+        return "addquestions";
+    }
+
+    // Edit existing question
+    @RequestMapping(value = "/edit/{id}")
+    public String editQuestions(@PathVariable("id") Long questionId, Model model) {
+        model.addAttribute("questions", questionsRepository.findById(questionId));
+        model.addAttribute("questions", questionsRepository.findAll());
+        return "edit";
+    }
+
+
 
     /* @CrossOrigin
      @RequestMapping(value="/savejson",method=RequestMethod.POST)
