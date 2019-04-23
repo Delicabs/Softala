@@ -5,8 +5,8 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface QuestionsRepository extends CrudRepository<Questions, Long> {
-    List<Questions> findById(@Param("question")String question);
+public interface QuestionsRepository extends CrudRepository<Question, Long> {
+    List<Question> findById(@Param("question")String question);
 
 
 }

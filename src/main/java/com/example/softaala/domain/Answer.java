@@ -1,11 +1,9 @@
 package com.example.softaala.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 // This class contains all the multiple choice
@@ -21,6 +19,11 @@ public class Answer {
 
     private long id = 0;
     private String answer;
+
+    @OneToOne
+    @JsonIgnore
+    @JoinColumn(name = "id")
+    private Question question;
 
     public Answer() {
     }

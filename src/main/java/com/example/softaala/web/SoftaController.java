@@ -52,8 +52,8 @@ public class SoftaController {
     @CrossOrigin
     @RequestMapping(value = "/questions")
     public @ResponseBody
-    List<Questions> questionRest() {
-        return (List<Questions>) questionsRepository.findAll();
+    List<Question> questionRest() {
+        return (List<Question>) questionsRepository.findAll();
     }
 
     @CrossOrigin
@@ -66,7 +66,7 @@ public class SoftaController {
     @CrossOrigin
     @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
     public @ResponseBody
-    Optional<Questions> findQuestionById(@PathVariable("id") Long questionId) {
+    Optional<Question> findQuestionById(@PathVariable("id") Long questionId) {
         return questionsRepository.findById(questionId);
     }
 
@@ -99,7 +99,7 @@ public class SoftaController {
     // Add new question
     @RequestMapping(value = "/addquestion")
     public String addQuestions(Model model) {
-        model.addAttribute("questions", new Questions());
+        model.addAttribute("questions", new Question());
         model.addAttribute("questions", questionsRepository.findAll());
         return "addquestions";
     }

@@ -1,13 +1,15 @@
 package com.example.softaala;
 
-import com.example.softaala.domain.MultipleChoice;
-import com.example.softaala.domain.MultipleChoiceRepository;
-import com.example.softaala.domain.Questions;
+import com.example.softaala.domain.Question;
 import com.example.softaala.domain.QuestionsRepository;
+import com.example.softaala.domain.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //testi_homma2
 //testi_homma
@@ -29,7 +31,7 @@ public class SoftaalaApplication {
     }
 
     @Bean
-    public CommandLineRunner questions(QuestionsRepository questionsRepository, MultipleChoiceRepository mrepo) {
+    public CommandLineRunner questions(QuestionsRepository questionsRepository) {
         return (args) -> {
 
           // Form form1 = new Form("Testi kyssäri, oletko supersankari?");
@@ -38,24 +40,24 @@ public class SoftaalaApplication {
             // These are the repositories for multiple choice options in answers assigned to questions
             // Also for testing, this may not be the final solution, changes may apply etc.
             // As the project matures, remove gibberish and replace with actual options
-            MultipleChoice mchoice1 = new MultipleChoice("asd","asdd","asdd");
-            MultipleChoice mchoice2 = new MultipleChoice("a","aasdfdf","dsads");
-            mrepo.save(mchoice1);
-            mrepo.save(mchoice2);
 
-
+       List<Value> values = new ArrayList<>();
+       Value value1 = new Value("vaihtoehto 1");
+            Value value2 = new Value("vaihtoehto 2");
+            Value value3 = new Value("vaihtoehto 666");
+            values.add(value1);
+            values.add(value2);
+            values.add(value3);
 
             // Example questions for testing and displaying in heroku
-            Questions question1 = new Questions("Missä koulutusohjelmassa opiskelet?",mchoice1);
-            Questions question2 = new Questions("Missä profiilissa opiskelet / aiot opiskella?", mchoice2);
-            Questions question3 = new Questions("Oletko onnistunut verkostoitumaan koulussa? Esimerkiksi onko sinulla kaveriporukka, jonka kanssa ratkotte opiskeluun liittyviä pulmia?",null);
-            Questions question4 = new Questions("Oletko verkostoitunut koulun ulkopuolella IT-alan ihmisten kanssa?", null);
-            Questions question5 = new Questions("Työskenteletkö jo IT-alalla?", null);
+            Question question1 = new Question("Missä koulutusohjelmassa opiskelet?","Radio", values);
+           // Question question2 = new Question("Missä profiilissa opiskelet / aiot opiskella? ");
+         //   Question question3 = new Question("Oletko onnistunut verkostoitumaan koulussa? Esimerkiksi onko sinulla kaveriporukka, jonka kanssa ratkotte opiskeluun liittyviä pulmia?",);
+
             questionsRepository.save(question1);
-            questionsRepository.save(question2);
-            questionsRepository.save(question3);
-            questionsRepository.save(question4);
-            questionsRepository.save(question5);
+           // questionsRepository.save(question2);
+         //   questionsRepository.save(question3);
+
 
 
 
