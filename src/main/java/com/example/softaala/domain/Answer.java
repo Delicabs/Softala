@@ -1,9 +1,9 @@
 package com.example.softaala.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 // This class contains all the multiple choice
@@ -17,13 +17,13 @@ public class Answer {
 
     //Vastauksen atribuutit, getterit & setterit
 
-    private long id = 0;
+    private long id;
     private String answer;
 
-    @OneToOne
-    @JsonIgnore
-    @JoinColumn(name = "id")
-    private Question question;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "answer")
+    private List<Question> question;
+
 
     public Answer() {
     }

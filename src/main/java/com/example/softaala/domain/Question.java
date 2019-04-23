@@ -1,5 +1,7 @@
 package com.example.softaala.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,12 +16,17 @@ public class Question {
     private long id;
     private String question;
     private String type;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "id")
     private List<Value> values;
 
-
-    //Jontteee
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "question")
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "id")
     private Answer answer;
+
     public Question(){
 
     }
