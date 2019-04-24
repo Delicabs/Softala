@@ -2,8 +2,10 @@ package com.example.softaala.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
 // This class contains all the multiple choice
@@ -21,8 +23,6 @@ public class Answer {
     private String answer;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "answer")
-    private List<Question> question;
 
 
     public Answer() {

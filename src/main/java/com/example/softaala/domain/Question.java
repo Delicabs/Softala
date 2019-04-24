@@ -1,7 +1,5 @@
 package com.example.softaala.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,38 +11,33 @@ public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long questionid;
     private String question;
     private String type;
-
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+   // @JoinColumn(name = "id")
     private List<Value> values;
 
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "id")
-    private Answer answer;
 
     public Question(){
 
     }
 
-    public Question(String question,String type, List<Value> values){
+    public Question(String question,String type){
+        super();
         this.question = question;
         this.type = type;
-        this.values = values;
+
+
 
     }
 
-
-    public long getId() {
-        return id;
+    public long getQuestionid() {
+        return questionid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setQuestionid(long questionid) {
+        this.questionid = questionid;
     }
 
     public String getQuestion() {
@@ -69,10 +62,5 @@ public class Question {
 
     public void setValues(List<Value> values) {
         this.values = values;
-    }
-
-    @Override
-    public String toString() {
-        return "Question{" + "id=" + id + ", question='" + question + '\'' + ", type='" + type + '\'' + ", values=" + values + '}';
     }
 }

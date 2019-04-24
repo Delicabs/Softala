@@ -1,15 +1,14 @@
 package com.example.softaala;
 
 import com.example.softaala.domain.Question;
-import com.example.softaala.domain.QuestionsRepository;
+import com.example.softaala.domain.QuestionRepository;
 import com.example.softaala.domain.Value;
+import com.example.softaala.domain.ValueRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.util.ArrayList;
-import java.util.List;
 
 //testi_homma2
 //testi_homma
@@ -24,6 +23,15 @@ import java.util.List;
 
 @SpringBootApplication
 public class SoftaalaApplication {
+    @Autowired
+    private ValueRepository valueRepository;
+
+    @Autowired
+    private QuestionRepository questionRepository;
+
+
+
+
 
     public static void main(String[] args) {
         SpringApplication.run(SoftaalaApplication.class, args);
@@ -31,7 +39,7 @@ public class SoftaalaApplication {
     }
 
     @Bean
-    public CommandLineRunner questions(QuestionsRepository questionsRepository) {
+    public CommandLineRunner runner() {
         return (args) -> {
 
           // Form form1 = new Form("Testi kyssäri, oletko supersankari?");
@@ -41,22 +49,30 @@ public class SoftaalaApplication {
             // Also for testing, this may not be the final solution, changes may apply etc.
             // As the project matures, remove gibberish and replace with actual options
 
-       List<Value> values = new ArrayList<>();
-       Value value1 = new Value("vaihtoehto 1");
-            Value value2 = new Value("vaihtoehto 2");
-            Value value3 = new Value("vaihtoehto 666");
-            values.add(value1);
-            values.add(value2);
-            values.add(value3);
+
+      //Value value1 = new Value("vaihtoehto 1","oletko homo","oletko perseen reikä");
+
+
+            Value value1 = new Value("paskaa","paskaaaaa","paskaa");
+           valueRepository.save(value1);
+
+            /*List<Value> values = new ArrayList<>();
+            values.add(value1); */
+
+
+            Question question1 = new Question("paskaa", "persettä");
+            questionRepository.save(question1);
+
 
             // Example questions for testing and displaying in heroku
-            Question question1 = new Question("Missä koulutusohjelmassa opiskelet?","Radio", values);
+
+             //valueRepository.save(new Value("paaska", "vittu", "perse", null));
            // Question question2 = new Question("Missä profiilissa opiskelet / aiot opiskella? ");
          //   Question question3 = new Question("Oletko onnistunut verkostoitumaan koulussa? Esimerkiksi onko sinulla kaveriporukka, jonka kanssa ratkotte opiskeluun liittyviä pulmia?",);
 
-            questionsRepository.save(question1);
-           // questionsRepository.save(question2);
-         //   questionsRepository.save(question3);
+
+           // questionRepository.save(question2);
+         //   questionRepository.save(question3);
 
 
 

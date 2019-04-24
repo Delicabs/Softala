@@ -17,12 +17,14 @@ public class SoftaController {
 
 
     @Autowired
-    QuestionsRepository questionsRepository;
+    QuestionRepository questionRepository;
 
     @Autowired
-    FormRepository formRepository;
-    @Autowired
     AnswersRepository answersRepository;
+
+
+    @Autowired
+    ValueRepository valueRepository;
 
 
     // RESTful all questions
@@ -53,7 +55,7 @@ public class SoftaController {
     @RequestMapping(value = "/questions")
     public @ResponseBody
     List<Question> questionRest() {
-        return (List<Question>) questionsRepository.findAll();
+        return (List<Question>) questionRepository.findAll();
     }
 
     @CrossOrigin
@@ -67,7 +69,7 @@ public class SoftaController {
     @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
     public @ResponseBody
     Optional<Question> findQuestionById(@PathVariable("id") Long questionId) {
-        return questionsRepository.findById(questionId);
+        return questionRepository.findById(questionId);
     }
 
 
@@ -75,7 +77,7 @@ public class SoftaController {
     public String index(Model model) {
 
         String hello = "Hello World fucking rad controller";
-        model.addAttribute("forms", formRepository.findAll());
+
         model.addAttribute("hello", hello);
         return "index";
     }
@@ -92,7 +94,7 @@ public class SoftaController {
     // @Preauthorize("hasAuthority('ADMIN)")
     @RequestMapping(value = "/delete{id}", method = RequestMethod.GET)
     public String deleteQuestions(@PathVariable("id") Long questionId, Model model) {
-        questionsRepository.deleteById(questionId);
+        questionRepository.deleteById(questionId);
                 return "redirect:../addquestion";
     }
 
@@ -100,15 +102,15 @@ public class SoftaController {
     @RequestMapping(value = "/addquestion")
     public String addQuestions(Model model) {
         model.addAttribute("questions", new Question());
-        model.addAttribute("questions", questionsRepository.findAll());
+        model.addAttribute("questions", questionRepository.findAll());
         return "addquestions";
     }
 
     // Edit existing question
     @RequestMapping(value = "/edit/{id}")
     public String editQuestions(@PathVariable("id") Long questionId, Model model) {
-        model.addAttribute("questions", questionsRepository.findById(questionId));
-        model.addAttribute("questions", questionsRepository.findAll());
+        model.addAttribute("questions", questionRepository.findById(questionId));
+        model.addAttribute("questions", questionRepository.findAll());
         return "edit";
     }
 
