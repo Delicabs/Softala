@@ -27,12 +27,6 @@ public class SoftaController {
     ValueRepository valueRepository;
 
 
-    // RESTful all questions
-    // @RequestMapping(value = "/questions")
-    // public @ResponseBody
-    //  List<Form> formListRest() {
-    //  return (List<Form>) formRepository.findAll();
-    //  }
     @CrossOrigin
     @RequestMapping(value = "/savejson")
     public String addJson(Model model) {
@@ -51,19 +45,19 @@ public class SoftaController {
         return "redirect:index";
     }
 
-    @CrossOrigin
-    @RequestMapping(value = "/questions")
-    public @ResponseBody
-    List<Question> questionRest() {
-        return (List<Question>) questionRepository.findAll();
-    }
+
+
+
 
     @CrossOrigin
-    @RequestMapping(value = "/answers")
+    @RequestMapping(value = "/questionss")
     public @ResponseBody
-    List<Answer> answersRest() {
-        return (List<Answer>) answersRepository.findAll();
+    List<Value> valueRest() {
+        return (List<Value>) valueRepository.findAll();
+
     }
+
+
 
     @CrossOrigin
     @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)

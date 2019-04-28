@@ -50,18 +50,42 @@ public class SoftaalaApplication {
             // As the project matures, remove gibberish and replace with actual options
 
 
-      //Value value1 = new Value("vaihtoehto 1","oletko homo","oletko perseen reikä");
 
-
-            Value value1 = new Value("paskaa","paskaaaaa","paskaa");
-           valueRepository.save(value1);
-
-            /*List<Value> values = new ArrayList<>();
-            values.add(value1); */
-
-
-            Question question1 = new Question("paskaa", "persettä");
+            Question question1 = new Question("Missä koulutusohjelmassa opiskelet?");
             questionRepository.save(question1);
+            Question question2 = new Question("Missä profiilissa opiskelet opiskelet?");
+            questionRepository.save(question2);
+            Question question3 = new Question("Oletko onnistunut verkostoitumaan koulussa? Esimerkiksi onko sinulla kaveriporukka, jonka kanssa ratkotte opiskeluun liittyviä pulmia");
+            questionRepository.save(question3);
+            Question question4 = new Question(" Oletko verkostoitunut koulun ulkopuolella IT-alan ihmisten kanssa?");
+            questionRepository.save(question4);
+            Question question5 = new Question(" Työskenteletkö jo IT-alalla?");
+            questionRepository.save(question5);
+
+
+
+            //Question question2 = new Question("")
+
+
+
+            valueRepository.save(new Value( question1,"radio", "tieto"));
+            valueRepository.save(new Value( question2,"check box", "tieto"));
+            valueRepository.save(new Value( question3, null,null));
+            valueRepository.save(new Value( question4, null,null));
+            valueRepository.save(new Value( question5, null,null));
+
+
+
+
+            //valueRepository.save(new Value("Olenko homo", "olenko lesbo", "olenko astronautti", question1));
+          //  questionRepository.save(question1);
+
+
+
+
+            /*Question question1 = new Question("onko sulla iso","perse");
+            questionRepository.save(question1); */
+
 
 
             // Example questions for testing and displaying in heroku

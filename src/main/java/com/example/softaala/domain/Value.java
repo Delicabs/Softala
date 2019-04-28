@@ -7,7 +7,9 @@ public class Value {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String option1, option2, option3;
+    private String type, option;
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question")
     private Question question;
@@ -16,20 +18,20 @@ public class Value {
 
     }
 
-    public Value(String option1, String option2, String option3){
+    public Value(String type){
         super();
-        this.option1 = option1;
-        this.option2 = option2;
-        this.option3 = option3;
+        this.type = type;
+        this.option = option;
+
+
 
 
     }
 
-    public Value(String option1, String option2, String option3, Question queston){
+    public Value(Question queston,String type, String option){
         super();
-        this.option1 = option1;
-        this.option2 = option2;
-        this.option3 = option3;
+        this.type = type;
+        this.option = option;
         this.question = queston;
     }
 
@@ -41,28 +43,20 @@ public class Value {
         this.id = id;
     }
 
-    public String getOption1() {
-        return option1;
+    public String getType() {
+        return type;
     }
 
-    public void setOption1(String option1) {
-        this.option1 = option1;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getOption2() {
-        return option2;
+    public String getOption() {
+        return option;
     }
 
-    public void setOption2(String option2) {
-        this.option2 = option2;
-    }
-
-    public String getOption3() {
-        return option3;
-    }
-
-    public void setOption3(String option3) {
-        this.option3 = option3;
+    public void setOption(String option) {
+        this.option = option;
     }
 
     public Question getQuestion() {

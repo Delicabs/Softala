@@ -1,5 +1,8 @@
 package com.example.softaala.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,15 +10,17 @@ import java.util.List;
 // This class contains all the questions and
 // answers multiple choice answers assigned to the answer class
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long questionid;
     private String question;
-    private String type;
+   // private String type;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
    // @JoinColumn(name = "id")
+    @JsonIgnore
     private List<Value> values;
 
 
@@ -23,10 +28,10 @@ public class Question {
 
     }
 
-    public Question(String question,String type){
+    public Question(String question){
         super();
         this.question = question;
-        this.type = type;
+      //  this.type = type;
 
 
 
@@ -48,13 +53,7 @@ public class Question {
         this.question = question;
     }
 
-    public String getType() {
-        return type;
-    }
 
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public List<Value> getValues() {
         return values;
