@@ -58,6 +58,14 @@ public class SoftaController {
     }
 
 
+    @CrossOrigin
+    @RequestMapping(value = "/answerss")
+    public @ResponseBody
+    List<Answer> answererRest() {
+        return (List<Answer>) answersRepository.findAll();
+
+    }
+
 
     @CrossOrigin
     @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
