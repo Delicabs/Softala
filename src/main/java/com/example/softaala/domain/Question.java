@@ -18,10 +18,16 @@ public class Question {
     private long questionid;
     private String question;
    // private String type;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "question")
    // @JoinColumn(name = "id")
     @JsonIgnore
-    private List<Value> values;
+    private Value value;
+
+    @OneToMany(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,
+            mappedBy = "question")
+    private List<Answer> answers;
+
 
 
     public Question(){
@@ -53,13 +59,19 @@ public class Question {
         this.question = question;
     }
 
-
-
-    public List<Value> getValues() {
-        return values;
+    public Value getValue() {
+        return value;
     }
 
-    public void setValues(List<Value> values) {
-        this.values = values;
+    public void setValue(Value value) {
+        this.value = value;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 }

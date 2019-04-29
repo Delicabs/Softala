@@ -1,9 +1,6 @@
 package com.example.softaala;
 
-import com.example.softaala.domain.Question;
-import com.example.softaala.domain.QuestionRepository;
-import com.example.softaala.domain.Value;
-import com.example.softaala.domain.ValueRepository;
+import com.example.softaala.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,6 +25,9 @@ public class SoftaalaApplication {
 
     @Autowired
     private QuestionRepository questionRepository;
+
+    @Autowired
+    private AnswersRepository answersRepository;
 
 
 
@@ -63,16 +63,24 @@ public class SoftaalaApplication {
             questionRepository.save(question5);
 
 
+            Answer answer1 = new Answer("heikki",question1);
+            answersRepository.save(answer1);
+            Answer answer2 = new Answer("paska",question1);
+            answersRepository.save(answer2);
+
+
+
+
 
             //Question question2 = new Question("")
 
 
 
-            valueRepository.save(new Value( question1,"radio", "tieto"));
-            valueRepository.save(new Value( question2,"check box", "tieto"));
-            valueRepository.save(new Value( question3, null,null));
-            valueRepository.save(new Value( question4, null,null));
-            valueRepository.save(new Value( question5, null,null));
+            valueRepository.save(new Value( question1,"radio", "tieto", "juha","tieto"));
+            valueRepository.save(new Value( question2,"check box", "tieto", null, null));
+            valueRepository.save(new Value( question3, null,null, null, null));
+            valueRepository.save(new Value( question4, null,null, null,null));
+            valueRepository.save(new Value( question5, null,null,null, null));
 
 
 

@@ -1,17 +1,17 @@
 package com.example.softaala.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 // This class contains all the multiple choice
 // answers assigned to the questions class
-@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
 public class Answer {
 
     @Id
@@ -19,8 +19,13 @@ public class Answer {
 
     //Vastauksen atribuutit, getterit & setterit
 
-    private long id;
+    private long answerid;
     private String answer;
+
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Question question;
 
 
 
@@ -28,18 +33,18 @@ public class Answer {
     public Answer() {
     }
 
-    public Answer(String answer) {
+    public Answer(String answer, Question question) {
         this.answer = answer;
+        this.question = question;
 
     }
 
-
     public long getId() {
-        return id;
+        return answerid;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.answerid = answerid;
     }
 
     public String getAnswer() {
@@ -50,8 +55,19 @@ public class Answer {
         this.answer = answer;
     }
 
-    @Override
-    public String toString() {
-        return "Answer{" + "id=" + id + ", Answer='" + answer + '\'' + '}';
+    public long getAnswerid() {
+        return answerid;
+    }
+
+    public void setAnswerid(long answerid) {
+        this.answerid = answerid;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }
