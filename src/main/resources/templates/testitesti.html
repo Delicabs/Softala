@@ -18,9 +18,9 @@
     <script>
       window.onload = searchText();
       function searchText() {
-        var answer = { answer: "test" };
+        var answer = { answer: "testi" };
         $.ajax({
-          url: "http://localhost:8080/savejson",
+          url: "https://softarest.herokuapp.com/savejson",
           type: "POST",
           data: JSON.stringify(answer),
           dataType: "json",

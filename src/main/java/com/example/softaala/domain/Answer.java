@@ -23,8 +23,11 @@ public class Answer {
     private String answer;
 
 
+
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
+
     private Question question;
 
 
@@ -33,6 +36,9 @@ public class Answer {
     public Answer() {
     }
 
+    public Answer(String answer) {
+        this.answer = answer;
+    }
     public Answer(String answer, Question question) {
         this.answer = answer;
         this.question = question;

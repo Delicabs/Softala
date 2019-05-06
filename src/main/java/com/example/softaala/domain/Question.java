@@ -19,7 +19,7 @@ public class Question {
     private String question;
    // private String type;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "question")
-   // @JoinColumn(name = "id")
+    @JoinColumn(name = "id")
     @JsonIgnore
     private Value value;
 
