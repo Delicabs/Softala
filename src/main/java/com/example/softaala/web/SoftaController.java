@@ -22,7 +22,6 @@ public class SoftaController {
     @Autowired
     AnswersRepository answersRepository;
 
-
     @Autowired
     ValueRepository valueRepository;
 
@@ -37,7 +36,6 @@ public class SoftaController {
     public @ResponseBody
     List<Value> valueRest() {
         return (List<Value>) valueRepository.findAll();
-
     }
 
     @CrossOrigin
@@ -45,7 +43,6 @@ public class SoftaController {
     public @ResponseBody
     List<Answer> answererRest() {
         return (List<Answer>) answersRepository.findAll();
-
     }
 
     @CrossOrigin
