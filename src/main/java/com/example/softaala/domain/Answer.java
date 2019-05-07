@@ -23,11 +23,9 @@ public class Answer {
     private String answer;
 
 
-
-
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-
+    @JoinColumn(name = "questionid")
     private Question question;
 
 

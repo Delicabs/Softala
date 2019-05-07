@@ -53,14 +53,18 @@ public class SoftaalaApplication {
 
             Question question1 = new Question("Missä koulutusohjelmassa opiskelet?");
             questionRepository.save(question1);
-            Question question2 = new Question("Missä profiilissa opiskelet opiskelet?");
+            Question question2 = new Question("Missä profiilissa opiskelet/ aiot opiskelle?");
             questionRepository.save(question2);
             Question question3 = new Question("Oletko onnistunut verkostoitumaan koulussa? Esimerkiksi onko sinulla kaveriporukka, jonka kanssa ratkotte opiskeluun liittyviä pulmia");
             questionRepository.save(question3);
             Question question4 = new Question(" Oletko verkostoitunut koulun ulkopuolella IT-alan ihmisten kanssa?");
             questionRepository.save(question4);
-            Question question5 = new Question(" Työskenteletkö jo IT-alalla?");
+            Question question5 = new Question("Koetko, että sukupuoli vaikuttaa opiskeluun tietojenkäsittelyn koulutusohjelmassa?");
             questionRepository.save(question5);
+            Question question6 = new Question(" Työskenteletkö jo IT-alalla?");
+            questionRepository.save(question6);
+            Question question7 = new Question("Millaisena koet tulevaisuutesi naisena IT-alalla?");
+            questionRepository.save(question7);
 
 
             Answer answer1 = new Answer("heikki",question1);
@@ -72,39 +76,19 @@ public class SoftaalaApplication {
 
 
 
-            //Question question2 = new Question("")
 
-
-
-            valueRepository.save(new Value( question1,"radio", "tieto", "juha","tieto"));
-            valueRepository.save(new Value( question2,"check box", "tieto", null, null));
-            valueRepository.save(new Value( question3, null,null, null, null));
-            valueRepository.save(new Value( question4, null,null, null,null));
-            valueRepository.save(new Value( question5, null,null,null, null));
-
-
-
-
-            //valueRepository.save(new Value("Olenko homo", "olenko lesbo", "olenko astronautti", question1));
-          //  questionRepository.save(question1);
+            valueRepository.save(new Value( question1,"Radio", "Tietojenkäsittelyn päivätoteutus", "Tietojenkäsittelyn monimuoto","Avoin AMK (tietojenkäsittely)",null));
+            valueRepository.save(new Value( question2,"Checkbox", "Ohjelmistotuotanto", "Digitaaliset palvelut", "ICT ja liiketoiminta","ICT infrastruktuurit"));
+            valueRepository.save(new Value( question3, "Radio","Kyllä","En", null, null));
+            valueRepository.save(new Value( question4, "Radio","Kyllä","En", null,null));
+            valueRepository.save(new Value( question5,"Radio", "Kyllä","En",null, null));
+            valueRepository.save(new Value( question6,"Radio", "Kyllä","En",null, null));
+            valueRepository.save(new Value( question7,null,null,null,null,null));
 
 
 
 
-            /*Question question1 = new Question("onko sulla iso","perse");
-            questionRepository.save(question1); */
-
-
-
-            // Example questions for testing and displaying in heroku
-
-             //valueRepository.save(new Value("paaska", "vittu", "perse", null));
-           // Question question2 = new Question("Missä profiilissa opiskelet / aiot opiskella? ");
-         //   Question question3 = new Question("Oletko onnistunut verkostoitumaan koulussa? Esimerkiksi onko sinulla kaveriporukka, jonka kanssa ratkotte opiskeluun liittyviä pulmia?",);
-
-
-           // questionRepository.save(question2);
-         //   questionRepository.save(question3);
+;
 
 
 

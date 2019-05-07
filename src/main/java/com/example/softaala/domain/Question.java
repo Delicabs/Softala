@@ -17,7 +17,7 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long questionid;
     private String question;
-   // private String type;
+
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "question")
     @JoinColumn(name = "id")
     @JsonIgnore
@@ -26,6 +26,7 @@ public class Question {
     @OneToMany(fetch = FetchType.LAZY,
             cascade =  CascadeType.ALL,
             mappedBy = "question")
+
     private List<Answer> answers;
 
 

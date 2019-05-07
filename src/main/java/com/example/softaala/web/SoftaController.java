@@ -27,14 +27,6 @@ public class SoftaController {
     ValueRepository valueRepository;
 
 
-    @CrossOrigin
-    @RequestMapping(value = "/savejson")
-    public String addJson(Model model) {
-        model.addAttribute("Answer", new Answer());
-
-
-        return "savejson";
-    }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Answer answer) {
@@ -136,6 +128,7 @@ public class SoftaController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     String saveJson(@RequestBody Answer answer) throws ParseException, IOException {
+
 
 
                 System.out.print(answer);
