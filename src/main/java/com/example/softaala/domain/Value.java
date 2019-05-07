@@ -8,7 +8,6 @@ public class Value {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String type;
-
     private String option1;
     private String option2;
     private String option3;
@@ -27,14 +26,14 @@ public class Value {
         this.option3 = option3;
     }
 
-    public Value(Question queston,String type, String option1, String option2,String option3, String option4){
+    public Value(Question question,String type, String option1, String option2,String option3, String option4){
         super();
         this.type = type;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
         this.option4 = option4;
-        this.question = queston;
+        this.question = question;
     }
 
     public String getOption4() {

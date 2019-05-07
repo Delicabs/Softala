@@ -15,7 +15,6 @@ import java.util.Optional;
 
 @Controller
 public class SoftaController {
-//moi moi
 
     @Autowired
     QuestionRepository questionRepository;
@@ -26,7 +25,6 @@ public class SoftaController {
 
     @Autowired
     ValueRepository valueRepository;
-
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Answer answer) {
@@ -64,12 +62,7 @@ public class SoftaController {
         return "index";
     }
 
-    @RequestMapping("/testi")
-    public String testi(Model model) {
-        return "testitesti";
-    }
-
-    // delete question
+    // Delete question
     // @Preauthorize("hasAuthority('ADMIN)")
     @RequestMapping(value = "/delete{id}", method = RequestMethod.GET)
     public String deleteQuestions(@PathVariable("id") Long questionId, Model model) {
@@ -105,5 +98,4 @@ public class SoftaController {
         answersRepository.save(answer);
        return "savejson";
     }
-
 }

@@ -5,10 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
-
-
 // This class contains all the questions and
 // answers multiple choice answers assigned to the answer class
+
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Question {
