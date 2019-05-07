@@ -12,7 +12,6 @@ import java.util.List;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Question {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long questionid;
@@ -29,19 +28,11 @@ public class Question {
 
     private List<Answer> answers;
 
-
-
-    public Question(){
-
-    }
+    public Question(){ }
 
     public Question(String question){
         super();
         this.question = question;
-      //  this.type = type;
-
-
-
     }
 
     public long getQuestionid() {
@@ -74,5 +65,15 @@ public class Question {
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "questionid=" + questionid +
+                ", question='" + question + '\'' +
+                ", value=" + value +
+                ", answers=" + answers +
+                '}';
     }
 }

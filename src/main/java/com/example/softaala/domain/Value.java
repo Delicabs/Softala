@@ -14,19 +14,10 @@ public class Value {
     private String option3;
     private String option4;
 
-
-
-    /*@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question")
-    private Question question;*/
-
     @OneToOne()
     private Question question;
 
-
-    public Value(){
-
-    }
+    public Value(){}
 
     public Value(String type){
         super();
@@ -34,10 +25,6 @@ public class Value {
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
-
-
-
-
     }
 
     public Value(Question queston,String type, String option1, String option2,String option3, String option4){
@@ -48,7 +35,6 @@ public class Value {
         this.option3 = option3;
         this.option4 = option4;
         this.question = queston;
-
     }
 
     public String getOption4() {
@@ -107,5 +93,16 @@ public class Value {
         this.question = question;
     }
 
-
+    @Override
+    public String toString() {
+        return "Value{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", option1='" + option1 + '\'' +
+                ", option2='" + option2 + '\'' +
+                ", option3='" + option3 + '\'' +
+                ", option4='" + option4 + '\'' +
+                ", question=" + question +
+                '}';
+    }
 }

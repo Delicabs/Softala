@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -27,19 +28,11 @@ public class SoftaController {
     ValueRepository valueRepository;
 
 
-
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Answer answer) {
-
         answersRepository.save(answer);
-
-
         return "redirect:index";
     }
-
-
-
-
 
     @CrossOrigin
     @RequestMapping(value = "/questionss")
@@ -49,7 +42,6 @@ public class SoftaController {
 
     }
 
-
     @CrossOrigin
     @RequestMapping(value = "/answerss")
     public @ResponseBody
@@ -58,7 +50,6 @@ public class SoftaController {
 
     }
 
-
     @CrossOrigin
     @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
     public @ResponseBody
@@ -66,25 +57,19 @@ public class SoftaController {
         return questionRepository.findById(questionId);
     }
 
-
     @RequestMapping("/index")
     public String index(Model model) {
-
         String hello = "Hello World fucking rad controller";
-
         model.addAttribute("hello", hello);
         return "index";
     }
 
     @RequestMapping("/testi")
     public String testi(Model model) {
-
-
         return "testitesti";
     }
 
     // delete question
-
     // @Preauthorize("hasAuthority('ADMIN)")
     @RequestMapping(value = "/delete{id}", method = RequestMethod.GET)
     public String deleteQuestions(@PathVariable("id") Long questionId, Model model) {
@@ -108,33 +93,16 @@ public class SoftaController {
         return "edit";
     }
 
-
-
-    /* @CrossOrigin
-     @RequestMapping(value="/savejson",method=RequestMethod.POST)
-
-     public  @ResponseBody void getAnswers(@RequestBody Answer answer, HttpServletRequest request) {
-
-          String answer1 = answer.getAnswers();
-          Answer ans1 = new Answer();
-          ans1.setAnswers(answer1);
-          answersRepository.save(ans1);
-
-         // your logic next
-
-     } */
     @CrossOrigin
     @RequestMapping(value = "/savejson", method = RequestMethod.POST,  consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    String saveJson(@RequestBody Answer answer) throws ParseException, IOException {
-
-
-
-                System.out.print(answer);
-       answersRepository.save(answer);
-
-
+    String saveJson(@RequestBody AnswerGenerator answerG) throws ParseException, IOException {
+        System.out.print(answerG);
+        Question question = questionRepository.findByQuestionid(answerG.getQuestionid());
+        System.out.println(question);
+        Answer answer = new Answer(answerG.getAnswer(), question);
+        answersRepository.save(answer);
        return "savejson";
     }
 

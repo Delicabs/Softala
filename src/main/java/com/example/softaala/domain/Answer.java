@@ -13,23 +13,15 @@ import javax.persistence.*;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 
 public class Answer {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    //Vastauksen atribuutit, getterit & setterit
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long answerid;
     private String answer;
 
-
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "questionid")
+    @JsonIgnore
     private Question question;
-
-
-
 
     public Answer() {
     }
@@ -40,7 +32,6 @@ public class Answer {
     public Answer(String answer, Question question) {
         this.answer = answer;
         this.question = question;
-
     }
 
     public long getId() {
@@ -73,5 +64,14 @@ public class Answer {
 
     public void setQuestion(Question question) {
         this.question = question;
+    }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "answerid=" + answerid +
+                ", answer='" + answer + '\'' +
+                ", question=" + question +
+                '}';
     }
 }
