@@ -91,6 +91,5 @@ public class Value {
     public void setQuestion(Question question) {
         this.question = question;
     }
-
-    }
+}
 

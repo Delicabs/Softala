@@ -66,13 +66,4 @@ public class Question {
         this.answers = answers;
     }
 
-    @Override
-    public String toString() {
-        return "Question{" +
-                "questionid=" + questionid +
-                ", question='" + question + '\'' +
-                ", value=" + value +
-                ", answers=" + answers +
-                '}';
-    }
 }
