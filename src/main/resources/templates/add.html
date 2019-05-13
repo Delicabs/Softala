@@ -12,20 +12,9 @@
     <form th:object="${questions}" th:action="@{save}" action="#" method="post">
         <div class="form-group">
             <input type="hidden" th:field="*{id}" class="form-control"/>
-            <label for="question">question</label>
+            <label for="question">Question</label>
             <input class="form-control" type="text" id="question" th:field="*{question}" />
             <div style="clear: both; display: block; height: 10px;"></div>
-
-            // lisätään multiplechoice myöhemmin _vittu_paska_perse_
-
-            <div style="clear: both; display: block; height: 10px;"></div>
-
-            <label for="catlist"></label>
-            <select id="catlist" th:field="*{category}" class="form-control">
-                <option th:each="category: ${categories}" th:value="${category.categoryId}" th:text="${category.name}"></option>
-            </select>
-
-
         </div>
         <input class="btn btn-success" type="submit" value="Save"/>
 

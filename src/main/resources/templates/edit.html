@@ -9,39 +9,39 @@
 
 <div class="container">
     <h1>Edit questions</h1>
-    <form th:object="${}" th:action="@{../save}" action="#" method="post">
+    <form th:object="${question}" th:action="@{../save}" action="#" method="post">
         <div class="form-group">
-            <input type="hidden" th:field="*{}" class="form-control"/>
-            <label for="title">title</label>
-            <input class="form-control" type="text" id="title" th:field="*{}" />
+            <input type="hidden" th:field="*{questionid}" class="form-control"/>
+            <label for="question">t</label>
+            <input class="form-control" type="text" id="question" th:field="*{question}" />
             <div style="clear: both; display: block; height: 10px;"></div>
-
-            <label for="author">author</label>
-            <input class="form-control" type="text" id="author" th:field="*{}" />
-            <div style="clear: both; display: block; height: 10px;"></div>
-
-            <label for="isbn">isbn</label>
-            <input class="form-control"  type="text" id="isbn" th:field="*{}" />
-            <div style="clear: both; display: block; height: 10px;"></div>
-
-            <label for="year">year</label>
-            <input class="form-control" type="text" id="year" th:field="*{}" />
-            <div style="clear: both; display: block; height: 10px;"></div>
-
-            <label for="price">price</label>
-            <input class="form-control" type="number" step="0.01" id="price" th:field="*{}" />
-            <div style="clear: both; display: block; height: 10px;"></div>
-
-            <label for="catlist">Category</label>
-            <select id="catlist" th:field="*{}" class="form-control">
-                <option th:each="category: ${}" th:value="${}" th:text="${}"></option>
-            </select>
-
-
-
         </div>
         <input class="btn btn-success" type="submit" value="Save"/>
-
+        <div style="clear: both; display: block; height: 10px;"></div>
+    </form>
+    <form th:object="${value}" th:action="@{../save}" action="#" method="post">
+            <input type="hidden" th:field="*{id}" class="form-control"/>
+        <div class="form-group">
+            <label for="value"></label>
+            <select type="text" id="value" th:field="*{value}">
+                <option th:each="value: ${value}" th:value="${value}">
+                 </option>
+            </select>
+        </div>
+        <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="value"></label>
+            <input class="form-control" type="text" id="value" th:field="*{option1}" />
+        <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="value"></label>
+            <input class="form-control" type="text" id="value" th:field="*{option2}" />
+        <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="value"></label>
+            <input class="form-control" type="text" id="value" th:field="*{option3}" />
+        <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="value"></label>
+            <input class="form-control" type="text" id="value" th:field="*{option4}" />
+            <div style="clear: both; display: block; height: 10px;"></div>
+        </div>
     </form>
 </div>
 </body>

@@ -13,17 +13,20 @@ public class Value {
     private String option3;
     private String option4;
 
+    //Relation to Question class
     @OneToOne()
     private Question question;
 
     public Value(){}
 
-    public Value(String type){
+    //To set value without question needed
+    public Value(String type,String option1, String option2,String option3, String option4){
         super();
         this.type = type;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
+        this.option4 = option4;
     }
 
     public Value(Question question,String type, String option1, String option2,String option3, String option4){

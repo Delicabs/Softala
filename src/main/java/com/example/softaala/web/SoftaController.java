@@ -25,12 +25,14 @@ public class SoftaController {
     @Autowired
     ValueRepository valueRepository;
 
+    //To be continued...
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Answer answer) {
-        answersRepository.save(answer);
+    public String save(Question question) {
+        questionRepository.save(question);
         return "redirect:index";
     }
 
+    //JSON end-point for questions and answers
     @CrossOrigin
     @RequestMapping(value = "/questionss")
     public @ResponseBody
@@ -38,6 +40,7 @@ public class SoftaController {
         return (List<Value>) valueRepository.findAll();
     }
 
+    //JSON for all answers
     @CrossOrigin
     @RequestMapping(value = "/answerss")
     public @ResponseBody
@@ -45,6 +48,7 @@ public class SoftaController {
         return (List<Answer>) answersRepository.findAll();
     }
 
+    //JSON search for question with id
     @CrossOrigin
     @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
     public @ResponseBody
@@ -52,15 +56,15 @@ public class SoftaController {
         return questionRepository.findById(questionId);
     }
 
+    //Display all questions
     @RequestMapping("/index")
     public String index(Model model) {
-        String hello = "Hello World fucking rad controller";
-        model.addAttribute("hello", hello);
+        model.addAttribute("questions", questionRepository.findAll());
         return "index";
     }
 
-    // Delete question
-    // @Preauthorize("hasAuthority('ADMIN)")
+    //Delete question with id
+    //Not working...
     @RequestMapping(value = "/delete{id}", method = RequestMethod.GET)
     public String deleteQuestions(@PathVariable("id") Long questionId, Model model) {
         questionRepository.deleteById(questionId);
@@ -68,23 +72,28 @@ public class SoftaController {
     }
 
     // Add new question
-    @RequestMapping(value = "/addquestion")
+    //Not working...
+    @RequestMapping(value = "/add")
     public String addQuestions(Model model) {
-        model.addAttribute("questions", new Question());
-        model.addAttribute("questions", questionRepository.findAll());
-        return "addquestions";
+        model.addAttribute("question", new Question());
+        model.addAttribute("Value", valueRepository.findAll());
+        return "add";
     }
 
     // Edit existing question
+    //Not working...
     @RequestMapping(value = "/edit/{id}")
     public String editQuestions(@PathVariable("id") Long questionId, Model model) {
-        model.addAttribute("questions", questionRepository.findById(questionId));
+        model.addAttribute("question", questionRepository.findById(questionId));
         model.addAttribute("questions", questionRepository.findAll());
+        model.addAttribute("Value", valueRepository.findAll());
+        model.addAttribute("value", valueRepository.findById(questionId));
         return "edit";
     }
 
+    //End-point for saving answers and mapping them to questions
     @CrossOrigin
-    @RequestMapping(value = "/savejson", method = RequestMethod.POST,  consumes = MediaType.APPLICATION_JSON_VALUE,
+    @RequestMapping(value="/savejson", method = RequestMethod.POST,  consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     String saveJson(@RequestBody AnswerGenerator answerG) throws ParseException, IOException {

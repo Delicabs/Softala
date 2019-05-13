@@ -15,23 +15,13 @@
             <th></th>
             <th></th>
         </tr>
-        <tr th:each="form : ${forms}">
-            <td th:text="${form.question}"></td>
-            <td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${form.id})}">Delete</a></td>
-            <td><a class="btn btn-success" th:href="@{/edit/{id}(id=${form.id})}">Edit</a></td>
+        <tr th:each="question : ${questions}">
+            <td th:text="${question.question}"></td>
+            <td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${question.questionid})}">Delete</a></td>
+            <td><a class="btn btn-success" th:href="@{/edit/{id}(id=${question.questionid})}">Edit</a></td>
         </tr>
     </table>
-    <a class="btn btn-success" href="/addquestion">Add question</a>
+    <a class="btn btn-success" href="/add">Add question</a>
 </body>
 </html>
 
-
-
-
-<!--
-<p th:text="'hello '+ ${hello}"></p>
-
-<tr th:each="form : ${forms}">
-    <td th:text="${form.question}"></td>
-</tr>
--->

@@ -1,5 +1,6 @@
 package com.example.softaala.domain;
 
+//Class for manual mapping
 public class AnswerGenerator {
     private Long questionid;
     private String answer;
